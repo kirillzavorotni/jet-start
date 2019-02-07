@@ -1,3 +1,10 @@
+import UserContactList from "./userContactList";
+import UserForm from "./userForm";
+
 export default {
-	template:"Start page", css:"webix_shadow_medium app_start"
+  cols: [
+    UserContactList,
+    UserForm,
+	],
+	css: "startStyle",
 };

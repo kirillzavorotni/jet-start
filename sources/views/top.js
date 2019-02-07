@@ -9,21 +9,24 @@ export default class TopView extends JetView{
 		};
 
 		var menu = {
-			view:"menu", id:"top:menu", 
-			css:"app_menu",
-			width:180, layout:"y", select:true,
+			view:"list",
+			id:"top:menu",
+			scroll: false,
+			width:180,
+			select:true,
 			template:"<span class='webix_icon #icon#'></span> #value# ",
 			data:[
-				{ value:"Dashboard", id:"start", icon:"wxi-columns" },
-				{ value:"Data",		 id:"data",  icon:"wxi-pencil" }
+				{ value:"Contacts", id:"start", icon:"wxi-columns" },
+				{ value:"Data",	id:"data",  icon:"wxi-pencil" },
+				{ value:"Settings",	id:"settings",  icon:"wxi-pencil" }
 			]
 		};
 
 		var ui = {
-			type:"clean", paddingX:5, css:"app_layout", cols:[
+			type:"wade", paddingX:5, css:"app_layout", cols:[
 				{  paddingX:5, paddingY:10, rows: [ {css:"webix_shadow_medium", rows:[header, menu]} ]},
 				{ type:"wide", paddingY:10, paddingX:5, rows:[
-					{ $subview:true } 
+					{ $subview:true }
 				]}
 			]
 		};

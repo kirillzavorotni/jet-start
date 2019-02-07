@@ -1,11 +1,9 @@
-import {JetView} from "webix-jet";
-import {data} from "models/records";
+import TabbarForDataTabs from "./TabbarForDataTabs";
+import multiViewForDataTab from "./multiViewForDataTab";
 
-export default class DataView extends JetView{
-	config(){
-		return { view:"datatable", autoConfig:true, css:"webix_shadow_medium" };
-	}
-	init(view){
-		view.parse(data);
-	}
-}
+export default {
+	cols: [
+		TabbarForDataTabs,
+		multiViewForDataTab
+	],
+};
