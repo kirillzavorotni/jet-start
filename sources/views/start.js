@@ -3,8 +3,17 @@ import UserForm from "./userForm";
 
 export default {
   cols: [
-    UserContactList,
-    UserForm,
-	],
-	css: "startStyle",
+    {
+      rows: [
+        { template: "Contacts", height: 40, css: "header-tabs-styles" },
+        UserContactList,
+      ],
+    },
+    {
+      rows: [
+        UserForm,
+        { view: "template" },
+      ],
+    },
+  ],
 };

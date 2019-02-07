@@ -1,5 +1,4 @@
 import { JetView } from "webix-jet";
-// import { contacts } from "models/contacts";
 
 export default class UserForm extends JetView {
 	config() {
@@ -9,6 +8,9 @@ export default class UserForm extends JetView {
 				{ view: "text", label: "UserName", name: "Name" },
 				{ view: "text", label: "Email", name: "Email" },
 			],
+			elementsConfig: {
+				labelPosition: "top",
+			}
 		};
 	}
 }
