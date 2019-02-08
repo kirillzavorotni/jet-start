@@ -1,6 +1,6 @@
 import { JetView } from "webix-jet";
 
-export default class CommonTable extends JetView {
+export default class CommonComboBox extends JetView {
 	constructor(app, name, data, label) {
 		super(app, name);
 		this._cdata = data;
