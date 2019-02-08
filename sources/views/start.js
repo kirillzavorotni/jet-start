@@ -1,19 +1,26 @@
-import UserContactList from "./userContactList";
-import UserForm from "./userForm";
+import { JetView } from "webix-jet";
 
-export default {
-  cols: [
-    {
-      rows: [
-        { template: "Contacts", height: 40, css: "header-tabs-styles" },
-        UserContactList,
+export default class StartPage extends JetView {
+  config() {
+    return {
+      cols: [
+        {
+          rows: [
+            { template: "Contacts", height: 40, css: "header-tabs-styles" },
+            { $subview: "userContactList", name: "list" },
+          ],
+        },
+        {
+          rows: [
+            { $subview: "userForm", name: "form" },
+            { view: "template" },
+          ],
+        },
       ],
-    },
-    {
-      rows: [
-        UserForm,
-        { view: "template" },
-      ],
-    },
-  ],
-};
+    }
+  }
+  ready() {
+    const list = this.getSubView("list").getRoot();
+    this.getSubView("form").bindWith(list);
+  }
+}

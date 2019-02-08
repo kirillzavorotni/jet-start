@@ -13,4 +13,7 @@ export default class UserForm extends JetView {
 			}
 		};
 	}
+	bindWith(widget){
+		this.getRoot().bind(widget);
+	}
 }
