@@ -12,6 +12,17 @@ export default class UserForm extends JetView {
 				{ view: "text", label: "Email", name: "Email" },
 				{ $subview: new CommonComboBox(this.app, "", countries, "Country") },
 				{ $subview: new CommonComboBox(this.app, "", statuses, "Status") },
+				{
+					cols: [
+						{ view: "spacer" },
+						{
+							view: "button",
+							label: "Save",
+							type: "form",
+							width: 150,
+						},
+					],
+				},
 			],
 			elementsConfig: {
 				labelPosition: "top",
