@@ -21,6 +21,8 @@ export default class StartPage extends JetView {
   }
   ready() {
     const list = this.getSubView("list").getRoot();
+    list.select(1);
+
     this.getSubView("form").bindWith(list);
   }
 }
