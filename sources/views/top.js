@@ -8,7 +8,7 @@ export default class TopView extends JetView{
 
 		var menu = {
 			view:"list",
-			id:"top:menu",
+			localId:"top:menu",
 			scroll: false,
 			width:180,
 			select:true,

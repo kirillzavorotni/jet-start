@@ -16,7 +16,7 @@ export default class DataTab extends JetView {
 					cols: [
 						{
 							view: "list",
-							id: "qwerty",
+							id: "userList",
 							scroll: false,
 							select: true,
 							data: ["Countries", "Statuses"],
@@ -37,4 +37,11 @@ export default class DataTab extends JetView {
 			]
 		};
 	}
+	ready() {
+		// const list = this.queryView("list").getRoot();
+    // this.list = $$("userList");
+    // // this.getSubView("form").bindWith(this.list);
+		// list.select(1);
+
+  }
 }
