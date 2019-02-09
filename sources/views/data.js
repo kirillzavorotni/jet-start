@@ -38,10 +38,8 @@ export default class DataTab extends JetView {
 		};
 	}
 	ready() {
-		// const list = this.queryView("list").getRoot();
-    // this.list = $$("userList");
-    // // this.getSubView("form").bindWith(this.list);
-		// list.select(1);
-
+		const list = this.getRoot().queryView("list");
+		const firstIDList = list.getFirstId();
+		list.select(firstIDList);
   }
 }
