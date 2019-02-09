@@ -55,7 +55,7 @@ export default class StartPage extends JetView {
           ],
         },
       ],
-    }
+    };
   }
 
   init() {
@@ -71,7 +71,7 @@ export default class StartPage extends JetView {
   }
 
   doClick() {
-    const names = ['Kirill Zavorotny', 'Olga Melichova', 'Andrew Braim', 'Vladimir Mucha'];
+    const names = ["Kirill Zavorotny", "Olga Melichova", "Andrew Braim", "Vladimir Mucha"];
     const emails = ["kirill@gmail.com", "olga@gmail.com", "andrew@gmail.com", "vladimir@gmail.com"];
     const randomeValue = Math.floor(Math.random() * 4);
     const item = {
