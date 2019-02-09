@@ -1,7 +1,7 @@
 import { JetView } from "webix-jet";
 import { countries } from "models/countries";
 import { statuses } from "models/statuses";
-// import { contacts } from "models/contacts";
+import { contacts } from "models/contacts";
 
 export default class UserForm extends JetView {
 	config() {
@@ -49,10 +49,9 @@ export default class UserForm extends JetView {
 							label: "Save",
 							type: "form",
 							width: 150,
-							// updateItem for collection
 							click: () => {
 								const formValues = this.getRoot().getValues();
-								this.updateListItem(formValues);
+								contacts.updateItem(formValues.id, formValues);
 							},
 						},
 					],
@@ -74,10 +73,5 @@ export default class UserForm extends JetView {
 		} else {
 			parent.setParam("id", 1, true);
 		}
-	}
-
-	updateListItem(values){
-		const list = this.getParentView().$$("userContactList");
-		list.updateItem(values.id, values);
 	}
 }

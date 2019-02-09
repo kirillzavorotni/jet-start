@@ -16,13 +16,13 @@ export default class DataTab extends JetView {
 					cols: [
 						{
 							view: "list",
-							id: "userList",
+							localId: "userList",
 							scroll: false,
 							select: true,
 							data: ["Countries", "Statuses"],
 							on: {
 								"onAfterSelect": function(id){
-									$$(id).show();
+									this.$scope.getRoot().queryView({id: id}).show();
 								},
 							}
 						},

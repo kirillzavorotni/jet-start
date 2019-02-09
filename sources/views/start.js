@@ -26,8 +26,7 @@ export default class StartPage extends JetView {
       autoheight: false,
       onClick: {
         "removeElement": function (e, id) {
-          this.remove(id);
-          return false;
+          contacts.remove(id);
         },
       },
       on: {
@@ -79,6 +78,7 @@ export default class StartPage extends JetView {
       Name: names[randomeValue],
       Email: emails[randomeValue],
     };
-    this.$$("userContactList").add(item);
+
+    contacts.add(item);
   }
 }
