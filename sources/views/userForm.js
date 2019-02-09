@@ -68,7 +68,7 @@ export default class UserForm extends JetView {
 		const id = parent.getParam("id");
 
 		if (id && parent.$$("userContactList").exists(id)) {
-			const item = parent.$$("userContactList").getItem(id);
+			const item = contacts.getItem(id);
 			this.getRoot().setValues(item);
 		} else {
 			parent.setParam("id", 1, true);
