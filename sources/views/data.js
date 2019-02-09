@@ -37,6 +37,7 @@ export default class DataTab extends JetView {
 			]
 		};
 	}
+	
 	ready() {
 		const list = this.getRoot().queryView("list");
 		const firstIDList = list.getFirstId();

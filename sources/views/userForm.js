@@ -51,15 +51,13 @@ export default class UserForm extends JetView {
 							width: 150,
 							// updateItem for collection
 							click: () => {
-								// console.log(this.getParentView().getRoot().queryView("list").data.pull);
+								const formValues = this.getRoot().getValues();
+								this.updateListItem(formValues);
 							},
 						},
 					],
 				},
 			],
-			rules: {
-				Name: webix.rules.isNotEmpty,
-			},
 			elementsConfig: {
 				labelPosition: "top",
 			}
@@ -76,5 +74,10 @@ export default class UserForm extends JetView {
 		} else {
 			parent.setParam("id", 1, true);
 		}
+	}
+
+	updateListItem(values){
+		const list = this.getParentView().$$("userContactList");
+		list.updateItem(values.id, values);
 	}
 }
