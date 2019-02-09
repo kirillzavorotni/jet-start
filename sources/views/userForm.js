@@ -16,14 +16,30 @@ export default class UserForm extends JetView {
 					localId: "combo1",
 					placeholder: "Options",
 					label: "Country",
-					options: countries,
+					suggest: {
+						data: countries,
+						// template: "#Name#", !?
+						body: {
+							template: "#Name#",
+						}
+					},
+					labelPosition: "left",
+					// options: countries,
 				},
 				{
 					view: "combo",
 					localId: "combo2",
 					placeholder: "Options",
+					suggest: {
+						data: statuses,
+						// template: "#Name#", !?
+						body: {
+							template: "#Name#",
+						}
+					},
 					label: "Status",
-					options: statuses,
+					labelPosition: "left",
+					// options: statuses, !?
 				},
 				{
 					cols: [
