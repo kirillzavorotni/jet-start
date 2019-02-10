@@ -4,6 +4,7 @@ import { contacts } from "models/contacts";
 
 export default class StartPage extends JetView {
   config() {
+    const _ = this.app.getService("locale")._;
 
     const list = {
       view: "list",
@@ -40,10 +41,10 @@ export default class StartPage extends JetView {
       cols: [
         {
           rows: [
-            { template: "Contacts", height: 40, css: "header-tabs-styles" },
+            { template: _("Contacts"), height: 40, css: "header-tabs-styles" },
             list,
             {
-              view: "button", localId: "addUserButton", label: "Add", type: "form", click: () => this.doClick(),
+              view: "button", localId: "addUserButton", label: _("Add"), type: "form", click: () => this.doClick(),
             },
           ],
         },

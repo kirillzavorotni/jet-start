@@ -5,10 +5,13 @@ import { statuses } from "models/statuses";
 
 export default class DataTab extends JetView {
 	config() {
+
+		const _ = this.app.getService("locale")._;
+
 		return {
 			rows: [
 				{
-					template: "Data",
+					template: _("Data"),
 					height: 40,
 					css: "header-tabs-styles",
 				},
@@ -19,10 +22,14 @@ export default class DataTab extends JetView {
 							localId: "userList",
 							scroll: false,
 							select: true,
-							data: ["Countries", "Statuses"],
+							template: "#title#",
+							data: [
+								{ id: "Countries", title: _("Countries") },
+								{ id: "Statuses", title: _("Statuses") },
+							],
 							on: {
-								"onAfterSelect": function(id){
-									this.$scope.getRoot().queryView({id: id}).show();
+								"onAfterSelect": function (id) {
+									this.$scope.getRoot().queryView({ id: id }).show();
 								},
 							}
 						},
@@ -37,10 +44,10 @@ export default class DataTab extends JetView {
 			]
 		};
 	}
-	
+
 	ready() {
 		const list = this.getRoot().queryView("list");
 		const firstIDList = list.getFirstId();
 		list.select(firstIDList);
-  }
+	}
 }

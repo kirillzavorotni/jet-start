@@ -6,22 +6,28 @@ export default class CommonTable extends JetView {
     this._tdata = data;
   }
   config() {
+
+    const _ = this.app.getService("locale")._;
+
     return {
       rows: [
         {
           view: "datatable",
-          autoConfig: true,
+          columns: [
+            { header: _("Name"), id: "Name", fillspace: true },
+            { header: _("Icon"), id: "Icon" },
+          ],
         },
         {
           cols: [
             {
               view: "button",
-              label: "Add",
+              label: _("Add"),
               type: "form",
             },
             {
               view: "button",
-              label: "Delete",
+              label: _("Delete"),
             },
           ]
         },

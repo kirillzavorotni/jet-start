@@ -2,6 +2,8 @@ import {JetView, plugins} from "webix-jet";
 
 export default class TopView extends JetView{
 	config(){
+		const _ = this.app.getService("locale")._;
+
 		var header = {
 			type:"header", template:this.app.config.name, css:"webix_header app_header"
 		};
@@ -12,7 +14,9 @@ export default class TopView extends JetView{
 			scroll: false,
 			width:180,
 			select:true,
-			template:"<span class='webix_icon #icon#'></span> #value# ",
+			template: (obj) => {
+				return _(obj.value);
+			},
 			data:[
 				{ value:"Contacts", id:"start", icon:"wxi-columns" },
 				{ value:"Data",	id:"data",  icon:"wxi-folder" },

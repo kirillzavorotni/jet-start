@@ -6,47 +6,45 @@ import { contacts } from "models/contacts";
 export default class UserForm extends JetView {
 	config() {
 
+		const _ = this.app.getService("locale")._;
+
 		return {
 			view: "form",
 			elements: [
-				{ view: "text", label: "UserName", name: "Name" },
-				{ view: "text", label: "Email", name: "Email" },
+				{ view: "text", label: _("UserName"), name: "Name" },
+				{ view: "text", label: _("Email"), name: "Email" },
 				{
 					view: "combo",
 					localId: "combo1",
-					placeholder: "Options",
-					label: "Country",
+					placeholder: _("Options"),
+					label: _("Country"),
 					suggest: {
 						data: countries,
-						// template: "#Name#", !?
 						body: {
 							template: "#Name#",
 						}
 					},
 					labelPosition: "left",
-					// options: countries,
 				},
 				{
 					view: "combo",
 					localId: "combo2",
-					placeholder: "Options",
+					placeholder: _("Options"),
 					suggest: {
 						data: statuses,
-						// template: "#Name#", !?
 						body: {
 							template: "#Name#",
 						}
 					},
-					label: "Status",
+					label: _("Status"),
 					labelPosition: "left",
-					// options: statuses, !?
 				},
 				{
 					cols: [
 						{ view: "spacer" },
 						{
 							view: "button",
-							label: "Save",
+							label: _("Save"),
 							type: "form",
 							width: 150,
 							click: () => {
