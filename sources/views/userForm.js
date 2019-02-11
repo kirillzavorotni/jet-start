@@ -10,11 +10,13 @@ export default class UserForm extends JetView {
 
 		return {
 			view: "form",
+			localId: "user-form",
 			elements: [
 				{ view: "text", label: _("UserName"), name: "Name" },
 				{ view: "text", label: _("Email"), name: "Email" },
 				{
 					view: "combo",
+					name:"Country",
 					localId: "combo1",
 					placeholder: _("Options"),
 					label: _("Country"),
@@ -28,6 +30,7 @@ export default class UserForm extends JetView {
 				},
 				{
 					view: "combo",
+					name:"Status",
 					localId: "combo2",
 					placeholder: _("Options"),
 					suggest: {
@@ -48,8 +51,10 @@ export default class UserForm extends JetView {
 							type: "form",
 							width: 150,
 							click: () => {
-								const formValues = this.getRoot().getValues();
-								contacts.updateItem(formValues.id, formValues);
+								if (contacts.count() && this.$$("user-form").validate()) {
+									const formValues = this.getRoot().getValues();
+									contacts.updateItem(formValues.id, formValues);
+								}
 							},
 						},
 					],
@@ -57,19 +62,24 @@ export default class UserForm extends JetView {
 			],
 			elementsConfig: {
 				labelPosition: "top",
-			}
+			},
+			rules: {
+				"Name": webix.rules.isNotEmpty,
+				"Email": webix.rules.isNotEmpty,
+			},
 		};
 	}
 
 	urlChange() {
-		const parent = this.getParentView();
-		const id = parent.getParam("id");
-
-		if (id && parent.$$("userContactList").exists(id)) {
-			const item = contacts.getItem(id);
-			this.getRoot().setValues(item);
-		} else {
-			parent.setParam("id", 1, true);
-		}
+		contacts.waitData.then(() => {
+			const parent = this.getParentView();
+			const id = parent.getParam("id");
+			if (id && parent.$$("userContactList").exists(id)) {
+				const item = contacts.getItem(id);
+				this.getRoot().setValues(item);
+			} else {
+				parent.setParam("id", 1, true);
+			}
+		});
 	}
 }

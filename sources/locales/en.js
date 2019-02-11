@@ -1,24 +1,3 @@
-// export default {
-//   "Контакты" : "Contacts",
-//   "Информация" : "Data",
-//   "Настройки" : "Settings",
-//   "Имя пользователя" : "UserName",
-//   "Емаил" : "Email",
-//   "Страна" : "Country",
-//   "Статус" : "Status",
-//   "Опции" : "Options",
-//   "Сохранить" : "Save",
-//   "Добавить" : "Add", 
-//   "Статусы" : "Statuses",
-//   "Страны" : "Countries",
-//   "Название" : "Name",
-//   "Иконка" : "Icon",
-//   "Удалить" : "Delete",
-//   "Свободен" : "Open",
-//   "Занят" : "Busy",
-//   "Приложение" : "App"
-// };
-
 export default {
   "Contacts" : "Contacts",
   "Data" : "Data",

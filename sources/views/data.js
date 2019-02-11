@@ -35,8 +35,8 @@ export default class DataTab extends JetView {
 						},
 						{
 							cells: [
-								{ id: "Countries", $subview: new CommonTable(this.app, "", countries) },
-								{ id: "Statuses", $subview: new CommonTable(this.app, "", statuses) },
+								{ id: "Countries", $subview: new CommonTable(this.app, "", countries, "addcountry") },
+								{ id: "Statuses", $subview: new CommonTable(this.app, "", statuses, "addstatus") },
 							],
 						},
 					],

@@ -1,6 +1,5 @@
 import { JetView } from "webix-jet";
 import { contacts } from "models/contacts";
-// import userForm from "./userForm";
 
 export default class StartPage extends JetView {
   config() {
@@ -19,7 +18,7 @@ export default class StartPage extends JetView {
         </div>
         <span class='removeElement webix_icon wxi-trash'></span>
       `,
-      scroll: false,
+      scroll: true,
       type: {
         height: 60,
       },
@@ -28,6 +27,11 @@ export default class StartPage extends JetView {
       onClick: {
         "removeElement": function (e, id) {
           contacts.remove(id);
+          if (!contacts.getFirstId()) {
+            this.$scope.getSubView("form").getRoot().clear();
+          } else {
+            this.select(contacts.getFirstId())
+          }
         },
       },
       on: {
@@ -50,8 +54,7 @@ export default class StartPage extends JetView {
         },
         {
           rows: [
-            { $subview: "userForm", name: "form" },
-            // or use userForm from import define top,
+            { $subview: "userForm", name: "form", },
             { view: "template" },
           ],
         },
@@ -60,26 +63,45 @@ export default class StartPage extends JetView {
   }
 
   init() {
-    this.$$("userContactList").parse(contacts);
+    const list = this.$$("userContactList");
+
+    list.sync(contacts);
+
+    contacts.waitData.then(() => {
+
+      const id = this.getParam("id");
+
+      if (id && list.exists(id)) {
+        list.select(id);
+      } else {
+        list.select(list.getFirstId());
+      }
+    });
   }
 
   urlChange() {
-    const id = this.getParam("id");
-    const list = this.$$("userContactList");
-    if (id && list.exists(id)) {
-      list.select(id);
-    }
+
   }
 
   doClick() {
     const names = ["Kirill Zavorotny", "Olga Melichova", "Andrew Braim", "Vladimir Mucha"];
     const emails = ["kirill@gmail.com", "olga@gmail.com", "andrew@gmail.com", "vladimir@gmail.com"];
+    const statuses = ["Busy", "Open"];
+    const countries = ["Belarus", "Usa", "Austria", "Belgium"];
+
     const randomeValue = Math.floor(Math.random() * 4);
+
     const item = {
       Name: names[randomeValue],
       Email: emails[randomeValue],
+     // status: statuses[Math.floor(Math.random() * 2)],
+      //country: countries[randomeValue],
     };
 
     contacts.add(item);
+
+    if (!this.$$("userContactList").getSelectedItem()) {
+      this.$$("userContactList").select(this.$$("userContactList").getFirstId());
+    }
   }
 }
