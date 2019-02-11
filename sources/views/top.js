@@ -5,7 +5,9 @@ export default class TopView extends JetView{
 		const _ = this.app.getService("locale")._;
 
 		var header = {
-			type:"header", template:this.app.config.name, css:"webix_header app_header"
+			type: "header", 
+			template: _("App"),
+			css:"webix_header app_header"
 		};
 
 		var menu = {

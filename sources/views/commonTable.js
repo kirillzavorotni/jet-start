@@ -14,9 +14,10 @@ export default class CommonTable extends JetView {
           view: "datatable",
           select: "row",
           columns: [
-            { header: _("Name"), id: "Name", fillspace: true },
+            { header: _("Name"), id: "Name", fillspace: true, editor: "text" },
             { header: _("Icon"), id: "Icon" },
           ],
+          editable: true,
         },
         {
           cols: [

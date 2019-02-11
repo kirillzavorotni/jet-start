@@ -27,6 +27,11 @@ export default class StartPage extends JetView {
       onClick: {
         "removeElement": function (e, id) {
           contacts.remove(id);
+          if (!contacts.getFirstId()) {
+            this.$scope.getSubView("form").getRoot().clear();
+          } else {
+            this.select(contacts.getFirstId())
+          }
         },
       },
       on: {
@@ -49,7 +54,7 @@ export default class StartPage extends JetView {
         },
         {
           rows: [
-            { $subview: "userForm", name: "form" },
+            { $subview: "userForm", name: "form", },
             { view: "template" },
           ],
         },
@@ -75,7 +80,7 @@ export default class StartPage extends JetView {
   }
 
   urlChange() {
-    
+
   }
 
   doClick() {
@@ -89,10 +94,14 @@ export default class StartPage extends JetView {
     const item = {
       Name: names[randomeValue],
       Email: emails[randomeValue],
-      status: statuses[Math.floor(Math.random() * 2)],
-      country: countries[randomeValue],
+     // status: statuses[Math.floor(Math.random() * 2)],
+      //country: countries[randomeValue],
     };
 
     contacts.add(item);
+
+    if (!this.$$("userContactList").getSelectedItem()) {
+      this.$$("userContactList").select(this.$$("userContactList").getFirstId());
+    }
   }
 }
