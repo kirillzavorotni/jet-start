@@ -1,6 +1,5 @@
 import { JetView } from "webix-jet";
 import { contacts } from "models/contacts";
-// import userForm from "./userForm";
 
 export default class StartPage extends JetView {
   config() {
@@ -19,7 +18,7 @@ export default class StartPage extends JetView {
         </div>
         <span class='removeElement webix_icon wxi-trash'></span>
       `,
-      scroll: false,
+      scroll: true,
       type: {
         height: 60,
       },
@@ -51,7 +50,6 @@ export default class StartPage extends JetView {
         {
           rows: [
             { $subview: "userForm", name: "form" },
-            // or use userForm from import define top,
             { view: "template" },
           ],
         },
@@ -60,15 +58,24 @@ export default class StartPage extends JetView {
   }
 
   init() {
-    this.$$("userContactList").parse(contacts);
+    const list = this.$$("userContactList");
+
+    list.sync(contacts);
+
+    contacts.waitData.then(() => {
+
+      const id = this.getParam("id");
+
+      if (id && list.exists(id)) {
+        list.select(id);
+      } else {
+        list.select(list.getFirstId());
+      }
+    });
   }
 
   urlChange() {
-    const id = this.getParam("id");
-    const list = this.$$("userContactList");
-    if (id && list.exists(id)) {
-      list.select(id);
-    }
+    
   }
 
   doClick() {

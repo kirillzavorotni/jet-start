@@ -62,14 +62,15 @@ export default class UserForm extends JetView {
 	}
 
 	urlChange() {
-		const parent = this.getParentView();
-		const id = parent.getParam("id");
-
-		if (id && parent.$$("userContactList").exists(id)) {
-			const item = contacts.getItem(id);
-			this.getRoot().setValues(item);
-		} else {
-			parent.setParam("id", 1, true);
-		}
+		contacts.waitData.then(() => {
+			const parent = this.getParentView();
+			const id = parent.getParam("id");
+			if (id && parent.$$("userContactList").exists(id)) {
+				const item = contacts.getItem(id);
+				this.getRoot().setValues(item);
+			} else {
+				parent.setParam("id", 1, true);
+			}
+		});
 	}
 }
