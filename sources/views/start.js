@@ -81,10 +81,16 @@ export default class StartPage extends JetView {
   doClick() {
     const names = ["Kirill Zavorotny", "Olga Melichova", "Andrew Braim", "Vladimir Mucha"];
     const emails = ["kirill@gmail.com", "olga@gmail.com", "andrew@gmail.com", "vladimir@gmail.com"];
+    const statuses = ["Busy", "Open"];
+    const countries = ["Belarus", "Usa", "Austria", "Belgium"];
+
     const randomeValue = Math.floor(Math.random() * 4);
+
     const item = {
       Name: names[randomeValue],
       Email: emails[randomeValue],
+      status: statuses[Math.floor(Math.random() * 2)],
+      country: countries[randomeValue],
     };
 
     contacts.add(item);

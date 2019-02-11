@@ -12,8 +12,8 @@ export default class TopView extends JetView{
 			view:"list",
 			localId:"top:menu",
 			scroll: false,
-			width:180,
-			select:true,
+			width: 180,
+			select: true,
 			template: (obj) => {
 				return _(obj.value);
 			},
